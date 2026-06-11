@@ -1,0 +1,30 @@
+services:
+  backend-dev:
+    image: backend-dev-1
+    volumes:
+      - ./shopping-backend:/usr/app/src
+    build:
+      context: ./shopping-backend
+      dockerfile: dev.Dockerfile
+  frontend-dev:
+    image: frontend-dev-1
+    volumes:
+      - ./shoppingcart:/usr/src/app
+    build:
+      context: ./shoppingcart
+      dockerfile: dev.Dockerfile
+    environment:
+      REACT_APP_BACKEND: http://localhost:8080/api/products
+    depends_on:
+      - backend-dev
+    ports:
+      - 3000:3000
+  nginx:
+    image: nginx:1.29
+    volumes:
+      - ./nginx.dev.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - 8080:80
+    depends_on:
+      - backend-dev
+      - frontend-dev
