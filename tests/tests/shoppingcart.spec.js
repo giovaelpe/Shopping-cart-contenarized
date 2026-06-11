@@ -11,5 +11,9 @@ test.describe('Shopping-contenirazed e2e tests', () => {
         const button = await page.getByText('ADD TO CART').first();
         await button.click();
         await expect(page.getByText("Total", {exact:false})).toBeVisible();
+    });
+    test("Api working", async({request}) => {
+        const response = await request.get('/api/products');
+        expect(response.status()).toBe(200);
     })
 })
