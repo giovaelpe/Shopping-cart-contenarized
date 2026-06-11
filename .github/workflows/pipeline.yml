@@ -51,17 +51,6 @@ jobs:
         working-directory: ./tests
         run: npx playwright test
 
-      - name: Show container logs on failure
-        if: failure()
-        working-directory: ./
-        run: |
-          echo "=== Backend logs ==="
-          docker compose logs backend-prod
-          echo "=== Frontend logs ==="
-          docker compose logs frontend-prod
-          echo "=== Nginx logs ==="
-          docker compose logs nginx
-
       - name: Clean up Docker containers
         if: always()
         working-directory: ./
