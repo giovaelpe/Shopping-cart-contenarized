@@ -49,7 +49,7 @@ jobs:
 
       - name: Run Playwright tests
         working-directory: ./tests
-        run: npm playwrigth tests
+        run: npm playwrigth test
 
       - name: Show container logs on failure
         if: failure()
