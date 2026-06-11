@@ -17,8 +17,6 @@ services:
       REACT_APP_BACKEND: http://localhost:8080/api/products
     depends_on:
       - backend-dev
-    ports:
-      - 3000:3000
   nginx:
     image: nginx:1.29
     volumes:
