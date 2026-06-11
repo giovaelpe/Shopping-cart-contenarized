@@ -23,7 +23,7 @@ jobs:
         run: docker build -t backend-prod -f Dockerfile .
 
       - name: Build frontend-prod image
-        run: docker build -t frontend-prod -f ./shoppingcartDockerfile ./shoppingcart
+        run: docker build -t frontend-prod -f ./shoppingcart/Dockerfile ./shoppingcart
 
       - name: Start Shoppingcart with Docker Compose
         working-directory: ./
